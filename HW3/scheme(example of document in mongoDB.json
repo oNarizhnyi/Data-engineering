@@ -1,0 +1,121 @@
+[{
+  "_id": 1,
+  "age": 58,
+  "gender": "Male",
+  "location": "USA",
+  "interests": "Sports, Health, Gaming",
+  "events": [
+    {
+      "campaignID": 811,
+      "campaignName": "Campaign_811",
+      "advertiserName": "Advertiser_82",
+      "minAge": 28,
+      "maxAge": 34,
+      "interest": "Gaming",
+      "location": "USA",
+      "eventID": "89a4dff5-7eac-4982-836f-ebfce9ba4907",
+      "userID": 1,
+      "device_type": "Desktop",
+      "timeStamp": {
+        "$date": "2024-11-10T02:08:24.000Z"
+      },
+      "clickTimestamp": null
+    },
+    {
+      "campaignID": 101,
+      "campaignName": "Campaign_101",
+      "advertiserName": "Advertiser_11",
+      "minAge": 21,
+      "maxAge": 36,
+      "interest": "Sports",
+      "location": "USA",
+      "eventID": "7b9dcee5-f60b-4954-a7d2-7417622c0e85",
+      "userID": 1,
+      "device_type": "Mobile",
+      "timeStamp": {
+        "$date": "2024-11-08T00:55:04.000Z"
+      },
+      "clickTimestamp": null
+    },
+    {
+      "campaignID": 153,
+      "campaignName": "Campaign_153",
+      "advertiserName": "Advertiser_16",
+      "minAge": 21,
+      "maxAge": 34,
+      "interest": "Travel",
+      "location": "USA",
+      "eventID": "584017c8-52f6-4636-a74a-1233244d692b",
+      "userID": 1,
+      "device_type": "Mobile",
+      "timeStamp": {
+        "$date": "2024-11-07T20:14:14.000Z"
+      },
+      "clickTimestamp": null
+    },
+    {
+      "campaignID": 289,
+      "campaignName": "Campaign_289",
+      "advertiserName": "Advertiser_31",
+      "minAge": 28,
+      "maxAge": 38,
+      "interest": "Travel",
+      "location": "USA",
+      "eventID": "ebe59bb7-5db6-47ec-afeb-a7f68cce53c7",
+      "userID": 1,
+      "device_type": "Desktop",
+      "timeStamp": {
+        "$date": "2024-11-07T01:15:05.000Z"
+      },
+      "clickTimestamp": null
+    },
+    {
+      "campaignID": 567,
+      "campaignName": "Campaign_567",
+      "advertiserName": "Advertiser_57",
+      "minAge": 25,
+      "maxAge": 48,
+      "interest": "Fashion",
+      "location": "USA",
+      "eventID": "e311d349-9600-47a9-b02b-164d23c2545a",
+      "userID": 1,
+      "device_type": "Desktop",
+      "timeStamp": {
+        "$date": "2024-10-31T03:38:16.000Z"
+      },
+      "clickTimestamp": null
+    },
+    {
+      "campaignID": 790,
+      "campaignName": "Campaign_790",
+      "advertiserName": "Advertiser_79",
+      "minAge": 23,
+      "maxAge": 41,
+      "interest": "Gaming",
+      "location": "USA",
+      "eventID": "d019145a-5a72-4b77-86e1-bd4911b1937f",
+      "userID": 1,
+      "device_type": "Desktop",
+      "timeStamp": {
+        "$date": "2024-10-23T15:44:30.000Z"
+      },
+      "clickTimestamp": null
+    },
+    {
+      "campaignID": 255,
+      "campaignName": "Campaign_255",
+      "advertiserName": "Advertiser_26",
+      "minAge": 25,
+      "maxAge": 38,
+      "interest": "Health",
+      "location": "USA",
+      "eventID": "510093ac-249f-4057-9dff-71bf06e7e2c5",
+      "userID": 1,
+      "device_type": "Desktop",
+      "timeStamp": {
+        "$date": "2024-10-06T23:13:34.000Z"
+      },
+      "clickTimestamp": null
+    }
+  ]
+}]
