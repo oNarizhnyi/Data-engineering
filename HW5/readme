@@ -1,1 +1,12 @@
+A containerized Flask REST API for ad campaign analytics, utilizing Redis for query caching.
 
+API Endpoints
+Results are cached in Redis for 30-300 seconds.
+
+GET /campaign/<id>/performance - Returns CTR, impressions, clicks, and total ad cost.
+
+GET /advertiser/<id>/spending - Returns total spending for a specific advertiser.
+
+GET /user/<id>/engagements - Returns the click history for a specific user.
+
+The API will be available at: http://localhost:5000
