@@ -1,0 +1,35 @@
+Ad Event Analytics with Cassandra
+This project is designed to process and store advertising analytics. The core logic involves migrating aggregated data from MySQL to Apache Cassandra for fast retrieval based on specific query patterns.
+
+Helper Functions and Connections
+create_conn: Initializes the MySQL database connection using environment variables for the host, port, and credentials.
+
+create_cluster: Creates a Cassandra cluster object. The function automatically determines the host address (Docker service or localhost) and establishes a connection.
+
+get_last_30_days: A utility that generates a list of dates representing the last 30 days from a given date. Used for collecting monthly statistics.
+
+Data Migration and Processing
+These functions execute SQL queries in MySQL, denormalize the data, and write it to Cassandra tables.
+
+CTR: Calculates the ratio of clicks to total impressions for each campaign on a daily basis.
+
+user_events: Transfers user ad interaction history, recording each event and whether a click occurred.
+
+top_advertiser_spend_by_month: Aggregates the daily ad spend for each advertiser.
+
+top_advertiser_spend_by_month_and_region: Aggregates the daily ad spend for each advertiser, separated by geographic region.
+
+top_user_click_by_month: Counts the number of ad clicks for each user on a daily basis.
+
+Data Retrieval
+Functions to fetch data directly from Cassandra based on specific criteria.
+
+get_CTR: Retrieves the CTR for a specified campaign on a given date.
+
+get_last_events: Returns the last 10 ads a specific user saw, ordered by time.
+
+get_top_advertiser_spend_by_month: Returns the top 5 advertisers with the highest spend over the last 30 days from a specified date.
+
+get_top_advertiser_spend_by_month_and_region: Returns the top 5 advertisers by spend in a specific region over a 30-day period.
+
+get_top_user_click_by_month: Returns the top 10 users with the highest number of clicks over the last 30 days.
