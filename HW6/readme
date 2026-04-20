@@ -1,1 +1,11 @@
+The script uses Apache Spark to load, clean, and filter the initial Amazon reviews CSV dataset. It then relies on two main groups of functions: one for writing aggregated data to MongoDB and another for quickly querying the results.
 
+Data Ingestion and Aggregation
+- write_product_grade() — Saves the total number of verified reviews and the average star rating for each product into the "product_ranking" collection. Uses "product_id" as the unique "_id" to ensure instant retrieval (O(1) time complexity).
+- write_user_verified_reviews() — Saves user activity (total number of verified reviews submitted) into the "user_reviews" collection. Uses "customer_id" as the unique "_id".
+- write_product_reviews_by_month() — Saves trend data (monthly number of reviews per product) into the "product_reviews_by_month" collection. Automatically creates an index on the "product_id" field using "pymongo" to optimize analytical queries.
+
+Querying and Trend Analysis
+- get_product_grade(product_id) — Queries the database and displays the overall statistics (average rating and total reviews) for a specific product.
+- get_user_verified_reviews(user_id) — Queries the database and displays the total number of reviews left by a specific customer.
+- get_product_reviews_by_month(product_id, year, month) — Performs an optimized index-based search to display the number of reviews for a specific product during a given period (year and month).
