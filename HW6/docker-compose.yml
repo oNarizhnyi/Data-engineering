@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_container
+    ports:
+      - "27017:27017"
+
+  app:
+    build: .
+    container_name: amazon
+    ports:
+      - "5000:5000"
