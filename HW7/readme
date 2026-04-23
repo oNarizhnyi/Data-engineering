@@ -1,0 +1,38 @@
+# Amazon Reviews Analytics System
+
+## Overview
+This system provides an automated pipeline and REST API for analyzing Amazon product reviews. It processes raw CSV data and enables efficient querying of product and customer metrics.
+
+## Tech Stack
+- Apache Spark: Data transformation and ETL
+- Cassandra: Distributed storage for processed data
+- Redis: Caching layer with a 5-minute TTL
+- Flask: REST API service
+- Docker: Containerization and orchestration
+
+## System Architecture
+The project is composed of four main services:
+1. Cassandra: Stores reviews organized by product and customer IDs to ensure queries work without the ALLOW FILTERING flag.
+2. Redis: Stores cached API responses to improve performance and reduce database load.
+3. ETL (Spark): Filters for verified purchases, performs aggregations, and populates the database.
+4. API: Serves the analytics through a set of endpoints.
+
+## Installation
+1. Ensure the source dataset is named amazon_reviews.csv and placed in the project root.
+2. Start the entire system using Docker Compose:
+   docker-compose up --build
+
+The ETL process will run automatically to set up the schema and load data before the API becomes active.
+
+## API Endpoints
+- GET /products/<product_id>/reviews
+  Returns all reviews for a product. Can be filtered by adding ?grade=N.
+- GET /customers/<customer_id>/reviews
+  Returns all reviews submitted by a specific customer.
+- GET /amount_of_reviews
+  Returns top N most reviewed items for a period. Requires start_date, end_date, and amount_of_products.
+- GET /customer_productivity
+  Returns top N productive customers, haters (1-2 stars), or backers (4-5 stars). Requires start_date, end_date, and amount_of_customers. Optional parameter: ers.
+
+## Configuration
+Database and cache connections are managed via environment variables (CASSANDRA_HOST, REDIS_HOST) defined in the docker-compose file.
