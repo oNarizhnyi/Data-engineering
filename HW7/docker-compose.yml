@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  cassandra:
+    image: cassandra:4.1
+    container_name: cassandra
+    ports:
+      - "9042:9042"
+    healthcheck:
+      test: ["CMD", "cqlsh", "-u", "cassandra", "-p", "cassandra", "-e", "describe keyspaces"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+    
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  # Сервіс для наповнення бази даних
+  etl:
+    build: .
+    container_name: amazon_etl
+    command: python amazon_ETL.py
+    depends_on:
+      cassandra:
+        condition: service_healthy
+    environment:
+      - CASSANDRA_HOST=cassandra
+
+  # Сервіс REST API
+  api:
+    build: .
+    container_name: amazon_api
+    ports:
+      - "5000:5000"
+    command: python amazon_API.py
+    depends_on:
+      etl:
+        condition: service_completed_successfully
+      redis:
+        condition: service_started
+    environment:
+      - CASSANDRA_HOST=cassandra
+      - REDIS_HOST=redis

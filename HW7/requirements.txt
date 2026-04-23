@@ -1,0 +1,4 @@
+flask
+cassandra-driver
+pyspark==3.4.3
+redis
