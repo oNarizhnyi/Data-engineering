@@ -1,0 +1,31 @@
+Kafka Tweet Processing System
+
+Description
+This project implements a data pipeline that streams tweets using Kafka. A producer reads data from a CSV file and sends it to a Kafka topic. 
+A consumer reads these messages and saves them into separate CSV files, organized by the minute of their creation.
+
+Components
+- Kafka Broker: Handles message streaming between components.
+- Producer: Reads twcs.csv and sends tweets to the "tweets" topic.
+- Consumer: Reads from Kafka and generates CSV files named tweets_dd_mm_yyyy_hh_mm.csv.
+- Infrastructure: Fully containerized using Docker and Docker Compose.
+
+Requirements
+- Docker and Docker Compose.
+- Python 3.10 with kafka-python 2.0.2.
+- Dataset: A file named twcs.csv must be present in the root directory.
+
+Usage Instructions
+1. Place your twcs.csv file in the project root directory.
+2. Build and start the containers:
+docker-compose up --build -d
+3. The producer will start sending data automatically.
+4. The consumer will generate CSV files in the project directory (synchronized via volumes).
+5. To view the logs of the consumer:
+docker logs -f consumer_app
+
+Output Data
+Each generated CSV file contains the following columns:
+- author_id
+- created_at
+- text
