@@ -1,0 +1,22 @@
+Kafka Tweet Stream Producer
+
+This project implements a Python Kafka producer that simulates a tweet stream by reading a CSV file and sending messages to a topic at a rate of 10-15 messages per second with updated timestamps.
+
+Services
+Kafka broker in KRaft mode
+Topic creation helper
+Python producer application
+
+How to run
+Place the twcs.csv file in the project directory. Use the command docker-compose up --build to start the infrastructure.
+
+How to check application logs
+Use the command docker logs -f python_app to see the messages being sent by the producer.
+
+How to check Kafka topic
+To check the total number of messages in the topic, use the command docker exec hw8-kafka-1 /bin/kafka-run-class kafka.tools.GetOffsetShell --broker-list localhost:9092 --topic tweets
+
+To read the messages directly from the partition, use the command docker exec -it hw8-kafka-1 /bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic tweets --partition 0 --offset earliest --max-messages 20
+
+Technical details
+The producer uses the kafka-python library and connects to the broker via the internal Docker network. Data is serialized in JSON format. The streaming rate is controlled by a 0.07s delay between messages.
